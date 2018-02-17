@@ -23,7 +23,7 @@ class Edit extends Component {
               <h4>120 lbs</h4>
             </div>
             <div className="form-group">
-              <label for="pounds">Rescuer</label>
+              <label for="pounds">Recieving Organization</label>
               <h4>Jackob Hess</h4>
             </div>
             <div className="form-actions">
