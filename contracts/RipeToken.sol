@@ -25,8 +25,8 @@ contract RipeToken {
     VolunteerOrg[] public VolunteerOrgs;
     mapping(address => uint) VolunteerOrgToIndex;
     
-    Donation[] public Donations;
-
+    Donation[] public UnverifiedDonations;
+    
     function newDonator(string _name, address _donatorAddress) public {
         uint donatorIndex = Donators.push(Donator({
             id: msg.sender,
@@ -47,12 +47,20 @@ contract RipeToken {
         VolunteerOrgToIndex[_volunteerOrgAddress] = volunteerOrgIndex;
     }
     
-    function getVolunteerOrgs() public view returns(VolunteerOrg[]) {
+    function getVolunteerOrgs() public view returns (VolunteerOrg[]) {
         return VolunteerOrgs;
     }
     
+    function isVolunteerOrg(address _volunteerOrgId) public view returns (bool) {
+        uint index = VolunteerOrgToIndex[_volunteerOrgId];
+        if (VolunteerOrgs[index].id == _volunteerOrgId) {
+            return true;
+        }
+        return false;
+    }
+    
     function newDonation(address _volunteerOrgId, uint _lbsDonated) public returns (uint) {
-        uint donationId = Donations.push(Donation({
+        uint donationId = UnverifiedDonations.push(Donation({
             donatorId: msg.sender,
             volunteerOrgId: _volunteerOrgId,
             lbsDonated: _lbsDonated,
@@ -61,18 +69,12 @@ contract RipeToken {
         return donationId;
     }
     
-    function getDonations() public view returns(Donation[]) {
-        return Donations;
-    }
-    
-    function getTotalDonationsByDonator(address _donatorAddress) public view returns (uint){
-        uint totalDonations = 0;
-        for (uint index = 0; index < Donations.length; index++) {
-            if (Donations[index].donatorId == _donatorAddress) {
-                totalDonations += Donations[index].lbsDonated;
-            }
+    function isDonator(address _donatorId) public view returns (bool) {
+        uint index = DonatorToIndex[_donatorId];
+        if (Donators[index].id == _donatorId) {
+            return true;
         }
-        return totalDonations;
+        return false;
     }
 }
 
