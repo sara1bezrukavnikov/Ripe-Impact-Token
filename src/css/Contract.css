@@ -1,0 +1,44 @@
+/*#Dashboard .id {
+	text-align: center;
+}
+
+#Dashboard .id .role {
+	margin-bottom: 0;
+	margin-top: 2em;
+} 
+
+#Dashboard .id .btn-primary {
+}
+
+.notifications .list-group {
+	margin-top: 2em !important;
+}
+
+.notifications .group-header {
+	padding-top: .2em;
+	padding-bottom: .2em;
+	background: #777;
+	color: white;
+	text-transform: uppercase;
+}*/
+
+#Contract .text-center {
+	margin-top: 2em;
+}
+
+.form-actions {
+	margin-top: 2em;
+}
+.form-actions .btn {
+	margin-bottom: 1em;
+}
+
+.coin {
+	font-size: 4em;
+	background: gold;
+	width: 3em;
+	height: 3em;
+	border-radius: 2em;
+	margin: .4em auto;
+	padding: .7em 0;
+}
